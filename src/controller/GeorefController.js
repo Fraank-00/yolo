@@ -7,7 +7,7 @@ GeorefController.obtenerProvincias = async (req, res) => {
 
   const respuesta = await axios.get(url);
 
-  return res.json({respuesta.data});
+  return res.json(respuesta.data);
 }
 
 module.exports = GeorefController

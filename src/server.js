@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 
 
+const {dataBase} = require('./conf/sequelizeconf.js')
+
 
 const usuarioRouter = require('./routes/usuarioRutes');
 const autenticacionRouter = require('./routes/autenticacionRoutes');
@@ -28,4 +30,5 @@ server.use(georefRouter);
 
 server.listen(port, () => {
   console.log(`Servidor corriendo en el puerto  ${port}`)
+  dataBase();
 });
