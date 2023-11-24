@@ -4,6 +4,7 @@ const express = require('express');
 const server = express();
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
 
 const {dataBase} = require('./conf/sequelizeconf.js')
@@ -22,8 +23,10 @@ server.get('/', (req, res) => {
   res.send('hola mundo')
 });
 //middleware
+server.use(cors());
 server.use(bodyParser.json());
 server.use(fileUpload());
+
 //Rutas
 server.use(usuarioRouter);
 server.use(autenticacionRouter);
@@ -32,6 +35,6 @@ server.use(georefRouter);
 
 server.listen(port, () => {
   console.log(`Servidor corriendo en el puerto  ${port}`)
-  //dataBase();
-  conectMongo()
+  dataBase();
+  //conectMongo()
 });
